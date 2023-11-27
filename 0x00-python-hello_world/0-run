@@ -1,0 +1,2 @@
+#!/bin/bashi
+python3 $PYFILE
