@@ -38,6 +38,7 @@ class Square:
             The size squared.
         """
         return self.__size ** 2
+
     def my_print(self):
         """"Prints this square."""
         for i in range(self.size):
