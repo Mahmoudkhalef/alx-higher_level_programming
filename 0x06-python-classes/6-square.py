@@ -9,7 +9,7 @@ class Square:
         """Initialize a new square.
         Args:
             size (int): The size of the new square.
-            position (int, int): The Position of the new square.
+            position (int, int): The position of the new square.
         """ 
         self.size = size
         self.position = position
