@@ -5,7 +5,7 @@
 /**
  * check_cycle - checks if list is cyclical
  * @list: pointer to list to check
- * Return:  if cyclical,  otherwise
+ * Return: 1 if cyclical, 0 otherwise
  */
 int check_cycle(listint_t *list)
 {
@@ -14,10 +14,9 @@ int check_cycle(listint_t *list)
 	while (fast && fast->next)
 	{
 		slow = slow->next;
-		fast = fast->next-next;
+		fast = fast->next->next;
 		if (slow == fast)
 			return (1);
 	}
 	return (0);
-}
-		
+}		
