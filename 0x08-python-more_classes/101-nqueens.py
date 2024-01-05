@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+import sys
+
+
 def solve_n_queens(n):
     def can_attack(pos1, pos2):
         return (pos1[0] == pos2[0] or pos1[1] == pos2[1] or
