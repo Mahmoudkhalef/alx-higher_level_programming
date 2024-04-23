@@ -1,16 +1,21 @@
 
 #!/usr/bin/node
-// Script that prints the title of a Star Wars movie where the episode number matches a given integer.
 
 const request = require('request');
+const url = process.argv[2];
 
-request(process.argv[2], (err, response, body) => {
-  if (!err) {
-    const episodes = JSON.parse(body).results;
-    console.log(episodes.reduce((count, episode) => {
-      return episode.characters.find((character) => character.endsWith('/18/'))
-        ? count + 1
-        : count;
-    }, 0));
+request.get(url, (err, res, data) => {
+  if (err) {
+    console.error(err);
+  } else {
+    try {
+      const movies = JSON.parse(data).results;
+      const numMovies = movies.reduce((count, movie) => {
+        return movie.characters.find((character) => character.endsWith('/18/')) ? count + 1 : count;
+      }, 0);
+      console.log(numMovies);
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+    }
   }
 });

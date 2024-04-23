@@ -1,14 +1,8 @@
 
 #!/usr/bin/node
-// Script that prints the title of a Star Wars movie where the episode number matches a given integer.
-
-const request = require('request');
 const fs = require('fs');
-
-request(process.argv[2], (err, response, body) => {
-  if (!err) {
-    fs.writeFile(process.argv[3], body, 'utf-8', (err) => {
-      if (err) { console.error(err); }
-    });
-  }
-});
+const request = require('request');
+// Make an HTTP GET request using the 'request' module to the URL provided as the third command-line argument (process.argv[2]).
+// The response from the request is piped (transferred) to a writable stream created by 'fs.createWriteStream',
+// which writes the content to a file specified as the fourth command-line argument (process.argv[3]).
+request(process.argv[2]).pipe(fs.createWriteStream(process.argv[3]));
